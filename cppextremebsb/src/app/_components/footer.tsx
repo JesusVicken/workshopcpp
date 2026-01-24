@@ -7,12 +7,9 @@ import {
 } from '@phosphor-icons/react/dist/ssr'
 import { Anchor } from 'lucide-react'
 import ascadeLogo from '../../../public/logo-ascade.png'
-import canoMAMALogo from '../../../public/canoMAMAlogo.png'
 
 const brands = [
   { name: 'Ascade', logo: ascadeLogo },
-  { name: 'CanoMAMA', logo: canoMAMALogo },
-  { name: 'Wellhub', logo: '/wellhub-logo.png' }, 
 ]
 
 export function Footer() {
@@ -66,7 +63,7 @@ export function Footer() {
         <footer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 mt-5">
           {/* Sobre */}
           <div data-aos="fade-up-left">
-            <h3 className="text-2xl font-semibold mb-2">CPP Extreme Brasília</h3>
+            <h3 className="text-2xl font-semibold mb-2">CPP Extreme</h3>
             <p className="mb-4">
               Promovendo inclusão social através do esporte e aventura.
             </p>
