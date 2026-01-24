@@ -4,8 +4,9 @@
 import Link from 'next/link'
 
 export default function WhatsappFloatingButton() {
-    const whatsappNumber = '61998219177'
-    const whatsappMessage = 'Olá! Gostaria de saber mais sobre as aulas de Canoa Havaiana da CPP Extreme BSB.'
+    const whatsappNumber = '27996314135'
+    // MUDANÇA AQUI: Texto ajustado para o workshop
+    const whatsappMessage = 'Olá! Gostaria de saber mais sobre o workshop de VAA da CPP Extreme BSB.'
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
 
     return (
@@ -13,7 +14,7 @@ export default function WhatsappFloatingButton() {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Fale conosco no WhatsApp"
+            aria-label="Fale conosco no WhatsApp sobre o workshop"
             className="
                 fixed bottom-6 right-6 z-50 
                 bg-green-600 hover:bg-green-700 

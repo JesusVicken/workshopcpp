@@ -29,9 +29,8 @@ export function Tours() {
 
             {/* 1. Imagem de Fundo (P&B) */}
             <div className="absolute inset-0 z-0">
-              {/* Substitua o src pela foto de ação geral */}
               <Image
-                src="/api/placeholder/800/1200"
+                src="/ranin5.jpg" // FOTO 1
                 alt="Va'a Geral"
                 fill
                 className="object-cover grayscale brightness-75 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 ease-out"
@@ -95,9 +94,8 @@ export function Tours() {
 
             {/* 1. Imagem de Fundo (P&B) */}
             <div className="absolute inset-0 z-0">
-              {/* Substitua o src pela foto de Leme */}
               <Image
-                src="/api/placeholder/800/1201"
+                src="/ranin4.jpg" // FOTO 2
                 alt="Leme Avançado"
                 fill
                 className="object-cover grayscale brightness-75 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 ease-out"

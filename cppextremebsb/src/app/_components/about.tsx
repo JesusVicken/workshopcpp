@@ -11,17 +11,24 @@ export function About() {
 
                     {/* FOTO */}
                     <div className="w-full md:w-5/12 relative group">
-                        <div className="aspect-[3/4] relative grayscale hover:grayscale-0 transition-all duration-700 border border-white/20">
+                        {/*
+                            ALTERAÇÕES AQUI:
+                            1. Removido 'grayscale', 'hover:grayscale-0' e as transições.
+                            2. Adicionado 'rounded-lg overflow-hidden' para um acabamento melhor nas bordas.
+                        */}
+                        <div className="aspect-[3/4] relative border border-white/20 rounded-lg overflow-hidden">
                             <Image
                                 src="/ranin.png" // COLOCAR FOTO DO RANIN AQUI
                                 alt="Ranin Baptistotte"
                                 fill
                                 className="object-cover"
+                                quality={100} // Define a qualidade máxima do JPEG/WebP
+                                priority // Instrui o Next.js a carregar essa imagem com prioridade alta
                             />
                             {/* Overlay Nome */}
-                            <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-6">
+                            <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-black/70 to-transparent p-6">
                                 <h3 className="text-white text-2xl font-bold uppercase">Ranin Baptistotte</h3>
-                                <p className="text-gray-400 text-xs tracking-widest uppercase">Oceanógrafo & Educador Físico</p>
+                                <p className="text-gray-300 text-xs tracking-widest uppercase font-semibold">Oceanógrafo & Educador Físico</p>
                             </div>
                         </div>
                     </div>
