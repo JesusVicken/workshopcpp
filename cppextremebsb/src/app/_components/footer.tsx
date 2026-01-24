@@ -7,14 +7,13 @@ import {
   YoutubeLogo,
   WhatsappLogo,
   MapPin,
-  Phone,
-  EnvelopeSimple
+  Phone
 } from '@phosphor-icons/react'
-import { Handshake } from 'lucide-react' // Troquei Anchor por Handshake para "Parceiros"
+import { Handshake } from 'lucide-react'
 import ascadeLogo from '../../../public/logo-ascade.png'
 
 const PARTNERS = [
-  { name: 'Ascade', logo: ascadeLogo, url: 'https://ascade.com.br' }, // Adicionei URL se houver
+  { name: 'Ascade', logo: ascadeLogo, url: 'https://ascade.com.br' },
 ]
 
 export function Footer() {
@@ -47,7 +46,8 @@ export function Footer() {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group bg-white p-6 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,255,0.1)] grayscale hover:grayscale-0 opacity-80 hover:opacity-100"
+                // REMOVIDO: grayscale e opacity. Agora é colorido e visível sempre.
+                className="group bg-white p-6 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,255,0.1)]"
               >
                 <Image
                   src={item.logo}
@@ -55,6 +55,7 @@ export function Footer() {
                   width={160}
                   height={80}
                   className="object-contain w-auto h-12 md:h-16"
+                  quality={100}
                 />
               </a>
             ))}
@@ -93,10 +94,6 @@ export function Footer() {
                 <Phone size={20} className="text-white/60" />
                 <span>(27) 99631-4135</span>
               </li>
-              {/* <li className="flex items-center justify-center md:justify-start gap-3 hover:text-white transition-colors">
-                    <EnvelopeSimple size={20} className="text-white/60" />
-                    <span>contato@cppextreme.com.br</span>
-                </li> */}
               <li className="flex items-start justify-center md:justify-start gap-3 hover:text-white transition-colors max-w-xs mx-auto md:mx-0">
                 <MapPin size={24} className="text-white/60 mt-0.5 shrink-0" />
                 <span>
@@ -113,9 +110,9 @@ export function Footer() {
               Siga-nos
             </h3>
             <div className="flex gap-4">
-              <SocialLink href="https://www.instagram.com/cppextreme/" icon={InstagramLogo} color="hover:text-[#E4405F]" label="Instagram" />
-              <SocialLink href="https://www.facebook.com/CPPExtreme" icon={FacebookLogo} color="hover:text-[#1877F2]" label="Facebook" />
-              <SocialLink href="https://www.youtube.com/@cppextreme" icon={YoutubeLogo} color="hover:text-[#FF0000]" label="YouTube" />
+              <SocialLink href="https://www.instagram.com/cppextreme/" icon={InstagramLogo} color="text-[#E4405F] hover:text-white hover:bg-[#E4405F]" label="Instagram" />
+              <SocialLink href="https://www.facebook.com/CPPExtreme" icon={FacebookLogo} color="text-[#1877F2] hover:text-white hover:bg-[#1877F2]" label="Facebook" />
+              <SocialLink href="https://www.youtube.com/@cppextreme" icon={YoutubeLogo} color="text-[#FF0000] hover:text-white hover:bg-[#FF0000]" label="YouTube" />
             </div>
             <p className="text-xs text-gray-600 mt-4 max-w-xs">
               Acompanhe nossos treinos, eventos e novidades nas redes.
@@ -125,10 +122,12 @@ export function Footer() {
       </div>
 
       {/* --- GOOGLE MAPS --- */}
-      <div className="w-full h-[300px] md:h-[400px] relative border-t border-white/10 grayscale hover:grayscale-0 transition-all duration-700">
+      {/* REMOVIDO: grayscale. Agora o mapa aparece colorido. */}
+      <div className="w-full h-[300px] md:h-[400px] relative border-t border-white/10">
         <iframe
           title="Localização CPP Extreme na Ascade"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.049446467368!2d-47.86314392496735!3d-15.801389984841967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3a5f7887713b%3A0xc3b0922e37905156!2sAscade%20N%C3%A1utica!5e0!3m2!1spt-BR!2sbr!4v1706040000000!5m2!1spt-BR!2sbr"
+          // Substitua pela URL correta do embed do Google Maps da Ascade se necessário
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.299645939234!2d-47.85966492497676!3d-15.813086484830114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3b003a851963%3A0x6b4f7380145719!2sClube%20Ascade!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
           width="100%"
           height="100%"
           loading="lazy"
@@ -137,14 +136,12 @@ export function Footer() {
           referrerPolicy="no-referrer-when-downgrade"
           className="w-full h-full"
         ></iframe>
-        {/* Overlay para interagir apenas ao clicar (opcional, melhora scroll) */}
-        <div className="absolute inset-0 bg-black/10 pointer-events-none shadow-inner" />
       </div>
 
       {/* --- COPYRIGHT --- */}
       <div className="bg-black py-6 text-center border-t border-white/5">
         <p className="text-xs text-gray-600">
-          &copy; {new Date().getFullYear()} CPP Extreme BSB. Todos os direitos reservados.
+          © {new Date().getFullYear()} CPP Extreme BSB. Todos os direitos reservados.
         </p>
       </div>
     </footer>
@@ -159,7 +156,8 @@ function SocialLink({ href, icon: Icon, color, label }: { href: string, icon: an
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className={`bg-zinc-900 p-3 rounded-xl text-gray-400 transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] ${color}`}
+      // Ajustei para o ícone já ter cor e mudar o fundo no hover
+      className={`bg-zinc-900 p-3 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] ${color}`}
     >
       <Icon size={24} weight="fill" />
     </a>
