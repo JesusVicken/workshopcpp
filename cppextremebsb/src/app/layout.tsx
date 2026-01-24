@@ -12,8 +12,8 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
-  title: "CPP Extreme BSB",
-  description: "CPP Extreme BSB Site",
+  title: "CPP Workshop",
+  description: "CPP Workshop",
   icons: {
     icon: "/cpp.jpeg",
   },

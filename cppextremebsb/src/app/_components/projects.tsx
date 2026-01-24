@@ -70,7 +70,7 @@ export default function Projects() {
                     transition={{ delay: 0.6 }}
                     className="text-lg md:text-2xl text-white font-serif italic mb-10 drop-shadow-md max-w-2xl"
                 >
-                    "Transforme sua técnica antiga com a biomecânica moderna."
+                    "Transforme sua técnica com a biomecânica moderna."
                 </motion.p>
 
                 {/* Info Cards */}
@@ -92,7 +92,7 @@ export default function Projects() {
                         <MapPin size={24} className="text-white" weight="fill" />
                         <div className="text-left leading-tight">
                             <span className="block text-[10px] uppercase text-gray-300 tracking-wider">Local</span>
-                            <span className="font-bold text-sm md:text-base">Base CPP Extreme</span>
+                            <span className="font-bold text-sm md:text-base">Base CPP Extreme BSB</span>
                         </div>
                     </div>
                 </motion.div>
