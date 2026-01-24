@@ -22,7 +22,7 @@ export function Footer() {
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
 
   return (
-    <footer className="bg-zinc-950 text-gray-300 border-t border-white/10 relative overflow-hidden">
+    <section className="bg-zinc-950 text-gray-300 border-t border-white/10 relative overflow-hidden flex flex-col">
 
       {/* Background Decorativo */}
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-zinc-950 to-black pointer-events-none opacity-50" />
@@ -46,7 +46,7 @@ export function Footer() {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                // REMOVIDO: grayscale e opacity. Agora é colorido e visível sempre.
+                // SEM FILTROS DE COR
                 className="group bg-white p-6 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,255,0.1)]"
               >
                 <Image
@@ -63,7 +63,7 @@ export function Footer() {
         </div>
 
         {/* --- GRID DE INFORMAÇÕES --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 mb-4">
 
           {/* Coluna 1: Sobre */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
@@ -110,9 +110,9 @@ export function Footer() {
               Siga-nos
             </h3>
             <div className="flex gap-4">
-              <SocialLink href="https://www.instagram.com/cppextreme/" icon={InstagramLogo} color="text-[#E4405F] hover:text-white hover:bg-[#E4405F]" label="Instagram" />
-              <SocialLink href="https://www.facebook.com/CPPExtreme" icon={FacebookLogo} color="text-[#1877F2] hover:text-white hover:bg-[#1877F2]" label="Facebook" />
-              <SocialLink href="https://www.youtube.com/@cppextreme" icon={YoutubeLogo} color="text-[#FF0000] hover:text-white hover:bg-[#FF0000]" label="YouTube" />
+              <SocialLink href="https://www.instagram.com/cppextreme/" icon={InstagramLogo} baseColor="text-[#E4405F]" hoverColor="hover:bg-[#E4405F]" label="Instagram" />
+              <SocialLink href="https://www.facebook.com/CPPExtreme" icon={FacebookLogo} baseColor="text-[#1877F2]" hoverColor="hover:bg-[#1877F2]" label="Facebook" />
+              <SocialLink href="https://www.youtube.com/@cppextreme" icon={YoutubeLogo} baseColor="text-[#FF0000]" hoverColor="hover:bg-[#FF0000]" label="YouTube" />
             </div>
             <p className="text-xs text-gray-600 mt-4 max-w-xs">
               Acompanhe nossos treinos, eventos e novidades nas redes.
@@ -121,43 +121,39 @@ export function Footer() {
         </div>
       </div>
 
-      {/* --- GOOGLE MAPS --- */}
-      {/* REMOVIDO: grayscale. Agora o mapa aparece colorido. */}
-      <div className="w-full h-[300px] md:h-[400px] relative border-t border-white/10">
+      {/* --- GOOGLE MAPS (SEU CÓDIGO ORIGINAL) --- */}
+      <div className="w-full h-[300px] md:h-[400px] lg:h-[450px] relative border-t border-white/10 z-20">
         <iframe
           title="Localização CPP Extreme na Ascade"
-          // Substitua pela URL correta do embed do Google Maps da Ascade se necessário
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.299645939234!2d-47.85966492497676!3d-15.813086484830114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3b003a851963%3A0x6b4f7380145719!2sClube%20Ascade!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+          src="https://www.google.com/maps?q=Ascade+-+Associa%C3%A7%C3%A3o+dos+Servidores+da+C%C3%A2mara+dos+Deputados,+Bras%C3%ADlia+-+DF&output=embed"
           width="100%"
           height="100%"
           loading="lazy"
           style={{ border: 0 }}
           allowFullScreen
           referrerPolicy="no-referrer-when-downgrade"
-          className="w-full h-full"
         ></iframe>
       </div>
 
       {/* --- COPYRIGHT --- */}
-      <div className="bg-black py-6 text-center border-t border-white/5">
+      <div className="bg-black py-6 text-center border-t border-white/5 relative z-20">
         <p className="text-xs text-gray-600">
           © {new Date().getFullYear()} CPP Extreme BSB. Todos os direitos reservados.
         </p>
       </div>
-    </footer>
+    </section>
   )
 }
 
 // Componente auxiliar para links sociais
-function SocialLink({ href, icon: Icon, color, label }: { href: string, icon: any, color: string, label: string }) {
+function SocialLink({ href, icon: Icon, baseColor, hoverColor, label }: { href: string, icon: any, baseColor: string, hoverColor: string, label: string }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      // Ajustei para o ícone já ter cor e mudar o fundo no hover
-      className={`bg-zinc-900 p-3 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] ${color}`}
+      className={`bg-zinc-900 p-3 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] ${baseColor} ${hoverColor} hover:text-white`}
     >
       <Icon size={24} weight="fill" />
     </a>
