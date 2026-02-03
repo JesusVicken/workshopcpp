@@ -61,7 +61,7 @@ export function Footer() {
 
   return (
     <section className="bg-zinc-950 text-gray-300 border-t border-white/10 relative overflow-hidden flex flex-col">
-      {/* Background decorativo */}
+      {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-zinc-950 to-black opacity-50 pointer-events-none" />
 
       <div className="container mx-auto px-6 py-16 relative z-10">
@@ -76,7 +76,9 @@ export function Footer() {
             {PARTNERS.map((item, index) => (
               <a
                 key={item.name}
-                ref={(el) => (partnersRef.current[index] = el)}
+                ref={(el) => {
+                  partnersRef.current[index] = el
+                }}
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -85,10 +87,10 @@ export function Footer() {
                 <Image
                   src={item.logo}
                   alt={item.name}
-                  width={220}
-                  height={220}
+                  width={240}
+                  height={240}
                   quality={100}
-                  className="object-contain w-[180px] h-[180px] md:w-[220px] md:h-[220px]"
+                  className="object-contain w-[200px] h-[200px] md:w-[240px] md:h-[240px]"
                 />
               </a>
             ))}
@@ -173,6 +175,8 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      {/* MAPA CPP EXTREME */}
       <div className="w-full h-[350px] md:h-[420px] border-t border-white/10">
         <iframe
           title="Localização CPP Extreme"
@@ -185,8 +189,6 @@ export function Footer() {
           referrerPolicy="no-referrer-when-downgrade"
         />
       </div>
-
-
 
       {/* COPYRIGHT */}
       <div className="bg-black py-6 text-center border-t border-white/5">
