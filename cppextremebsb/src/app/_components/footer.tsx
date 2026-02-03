@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import {
   FacebookLogo,
@@ -7,146 +8,210 @@ import {
   YoutubeLogo,
   WhatsappLogo,
   MapPin,
-  Phone
+  Phone,
 } from '@phosphor-icons/react'
 import { Handshake } from 'lucide-react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
 import ascadeLogo from '../../../public/logo-ascade.png'
+import partnerLogo from '../../../public/logo.png'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const PARTNERS = [
   { name: 'Ascade', logo: ascadeLogo, url: 'https://ascade.com.br' },
+  { name: 'CPP Extreme', logo: partnerLogo, url: '#' },
 ]
 
 export function Footer() {
-  const whatsappNumber = '61998219177'
-  const whatsappMessage = 'Olá, gostaria de mais informações sobre as aulas de remo na CPP Extreme!'
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
+  const partnersRef = useRef<(HTMLAnchorElement | null)[]>([])
+
+  const whatsappNumber = '279996314135'
+  const whatsappMessage =
+    'Olá, gostaria de mais informações sobre as aulas de remo na CPP Extreme!'
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    whatsappMessage
+  )}`
+
+  useEffect(() => {
+    if (!partnersRef.current.length) return
+
+    gsap.fromTo(
+      partnersRef.current,
+      {
+        opacity: 0,
+        y: 80,
+        scale: 0.85,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1,
+        ease: 'power4.out',
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: partnersRef.current[0],
+          start: 'top 85%',
+        },
+      }
+    )
+  }, [])
 
   return (
     <section className="bg-zinc-950 text-gray-300 border-t border-white/10 relative overflow-hidden flex flex-col">
-
-      {/* Background Decorativo */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-zinc-950 to-black pointer-events-none opacity-50" />
+      {/* Background decorativo */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-zinc-950 to-black opacity-50 pointer-events-none" />
 
       <div className="container mx-auto px-6 py-16 relative z-10">
-
-        {/* --- SEÇÃO DE PARCEIROS --- */}
-        <div
-          className="border-b border-white/10 pb-12 mb-12"
-          data-aos="fade-up"
-        >
+        {/* PARCEIROS */}
+        <div className="border-b border-white/10 pb-12 mb-12" data-aos="fade-up">
           <h4 className="text-2xl md:text-3xl font-bold mb-10 text-center flex items-center justify-center gap-3 text-white uppercase tracking-wide">
             <Handshake className="w-8 h-8 text-white/80" />
             Parceiros Oficiais
           </h4>
 
-          <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+          <div className="flex flex-wrap justify-center gap-10">
             {PARTNERS.map((item, index) => (
               <a
-                key={index}
+                key={item.name}
+                ref={(el) => (partnersRef.current[index] = el)}
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                // SEM FILTROS DE COR
-                className="group bg-white p-6 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,255,0.1)]"
+                className="group bg-white p-8 rounded-3xl flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] will-change-transform"
               >
                 <Image
                   src={item.logo}
                   alt={item.name}
-                  width={160}
-                  height={80}
-                  className="object-contain w-auto h-12 md:h-16"
+                  width={220}
+                  height={220}
                   quality={100}
+                  className="object-contain w-[180px] h-[180px] md:w-[220px] md:h-[220px]"
                 />
               </a>
             ))}
           </div>
         </div>
 
-        {/* --- GRID DE INFORMAÇÕES --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 mb-4">
-
-          {/* Coluna 1: Sobre */}
+        {/* GRID INFO */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          {/* SOBRE */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
-            <h3 className="text-2xl font-black text-white uppercase tracking-wider mb-2">
+            <h3 className="text-2xl font-black text-white uppercase tracking-wider">
               CPP Extreme
             </h3>
-            <p className="text-sm md:text-base text-gray-400 leading-relaxed max-w-sm">
-              Promovendo inclusão social, saúde e performance através do esporte e da aventura no coração de Brasília.
+            <p className="text-gray-400 leading-relaxed max-w-sm">
+              Promovendo inclusão social, saúde e performance através do esporte e
+              da aventura no coração de Brasília.
             </p>
+
             <a
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-6 rounded-full transition-all hover:scale-105 shadow-lg shadow-green-900/20"
+              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-6 rounded-full transition-all hover:scale-105 shadow-lg shadow-green-900/20"
             >
               <WhatsappLogo size={24} weight="fill" />
               Fale Conosco
             </a>
           </div>
 
-          {/* Coluna 2: Contato Rápido */}
+          {/* CONTATO */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
-            <h3 className="text-xl font-bold text-white uppercase tracking-wider mb-2">
+            <h3 className="text-xl font-bold text-white uppercase tracking-wider">
               Contato
             </h3>
             <ul className="space-y-4 text-gray-400">
-              <li className="flex items-center justify-center md:justify-start gap-3 hover:text-white transition-colors">
+              <li className="flex items-center gap-3">
                 <Phone size={20} className="text-white/60" />
                 <span>(27) 99631-4135</span>
               </li>
-              <li className="flex items-start justify-center md:justify-start gap-3 hover:text-white transition-colors max-w-xs mx-auto md:mx-0">
+              <li className="flex items-start gap-3 max-w-xs">
                 <MapPin size={24} className="text-white/60 mt-0.5 shrink-0" />
                 <span>
-                  Ascade - Assoc. dos Servidores da Câmara dos Deputados<br />
-                  <span className="text-xs text-gray-500 uppercase font-bold">Brasília - DF</span>
+                  Ascade – Associação dos Servidores da Câmara dos Deputados
+                  <br />
+                  <span className="text-xs text-gray-500 uppercase font-bold">
+                    Brasília - DF
+                  </span>
                 </span>
               </li>
             </ul>
           </div>
 
-          {/* Coluna 3: Redes Sociais */}
-          <div className="flex flex-col items-center md:items-start lg:items-end text-center lg:text-right space-y-4">
-            <h3 className="text-xl font-bold text-white uppercase tracking-wider mb-2">
+          {/* REDES */}
+          <div className="flex flex-col items-center md:items-end text-center md:text-right space-y-4">
+            <h3 className="text-xl font-bold text-white uppercase tracking-wider">
               Siga-nos
             </h3>
+
             <div className="flex gap-4">
-              <SocialLink href="https://www.instagram.com/cppextreme/" icon={InstagramLogo} baseColor="text-[#E4405F]" hoverColor="hover:bg-[#E4405F]" label="Instagram" />
-              <SocialLink href="https://www.facebook.com/CPPExtreme" icon={FacebookLogo} baseColor="text-[#1877F2]" hoverColor="hover:bg-[#1877F2]" label="Facebook" />
-              <SocialLink href="https://www.youtube.com/@cppextreme" icon={YoutubeLogo} baseColor="text-[#FF0000]" hoverColor="hover:bg-[#FF0000]" label="YouTube" />
+              <SocialLink
+                href="https://www.instagram.com/cppextreme/"
+                icon={InstagramLogo}
+                baseColor="text-[#E4405F]"
+                hoverColor="hover:bg-[#E4405F]"
+                label="Instagram"
+              />
+              <SocialLink
+                href="https://www.facebook.com/CPPExtreme"
+                icon={FacebookLogo}
+                baseColor="text-[#1877F2]"
+                hoverColor="hover:bg-[#1877F2]"
+                label="Facebook"
+              />
+              <SocialLink
+                href="https://www.youtube.com/@cppextreme"
+                icon={YoutubeLogo}
+                baseColor="text-[#FF0000]"
+                hoverColor="hover:bg-[#FF0000]"
+                label="YouTube"
+              />
             </div>
-            <p className="text-xs text-gray-600 mt-4 max-w-xs">
-              Acompanhe nossos treinos, eventos e novidades nas redes.
-            </p>
           </div>
         </div>
       </div>
-
-      {/* --- GOOGLE MAPS (SEU CÓDIGO ORIGINAL) --- */}
-      <div className="w-full h-[300px] md:h-[400px] lg:h-[450px] relative border-t border-white/10 z-20">
+      <div className="w-full h-[350px] md:h-[420px] border-t border-white/10">
         <iframe
-          title="Localização CPP Extreme na Ascade"
-          src="https://www.google.com/maps?q=Ascade+-+Associa%C3%A7%C3%A3o+dos+Servidores+da+C%C3%A2mara+dos+Deputados,+Bras%C3%ADlia+-+DF&output=embed"
+          title="Localização CPP Extreme"
+          src="https://www.google.com/maps?q=CPP+Extreme+-15.8186875,-47.8519375&z=17&output=embed"
           width="100%"
           height="100%"
           loading="lazy"
           style={{ border: 0 }}
           allowFullScreen
           referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
+        />
       </div>
 
-      {/* --- COPYRIGHT --- */}
-      <div className="bg-black py-6 text-center border-t border-white/5 relative z-20">
+
+
+      {/* COPYRIGHT */}
+      <div className="bg-black py-6 text-center border-t border-white/5">
         <p className="text-xs text-gray-600">
-          © {new Date().getFullYear()} CPP Extreme BSB. Todos os direitos reservados.
+          © {new Date().getFullYear()} CPP Extreme BSB. Todos os direitos
+          reservados.
         </p>
       </div>
     </section>
   )
 }
 
-// Componente auxiliar para links sociais
-function SocialLink({ href, icon: Icon, baseColor, hoverColor, label }: { href: string, icon: any, baseColor: string, hoverColor: string, label: string }) {
+function SocialLink({
+  href,
+  icon: Icon,
+  baseColor,
+  hoverColor,
+  label,
+}: {
+  href: string
+  icon: any
+  baseColor: string
+  hoverColor: string
+  label: string
+}) {
   return (
     <a
       href={href}

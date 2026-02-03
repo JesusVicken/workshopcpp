@@ -7,7 +7,7 @@ export default function CheckVaa() {
         <section className="bg-zinc-950 py-24 px-6 text-center">
             <div className="container mx-auto max-w-2xl">
                 <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase">
-                    Garanta Sua Evolução
+                    Garanta Sua Vaga no Workshop
                 </h2>
                 <p className="text-gray-400 text-lg mb-12">
                     Invista na sua técnica com quem é referência nacional e mundial.
@@ -43,7 +43,7 @@ export default function CheckVaa() {
 
                         {/* BOTÃO FINAL */}
                         <a
-                            href="https://wa.me/5527999999999?text=Ola,%20gostaria%20de%20me%20inscrever%20no%20Workshop%20Vaa%20Moderno" // EDITAR LINK
+                            href="https://wa.me/5527996314135?text=Ola,%20gostaria%20de%20me%20inscrever%20no%20Workshop%20Vaa%20Moderno" 
                             target="_blank"
                             className="w-full bg-white text-black hover:bg-gray-200 font-bold py-5 px-6 transition-all flex items-center justify-center gap-3 uppercase tracking-wide group"
                         >
