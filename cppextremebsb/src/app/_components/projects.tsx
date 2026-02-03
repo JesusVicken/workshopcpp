@@ -106,7 +106,7 @@ export default function Projects() {
                     whileTap={{ scale: 0.95 }}
                 >
                     <a
-                        href="https://wa.me/5527999999999" // COLOCAR NÚMERO
+                        href="https://wa.me/5527996314135" 
                         target="_blank"
                         className="bg-white text-black hover:bg-gray-100 px-10 py-5 rounded-full font-bold text-lg md:text-xl flex items-center gap-3 shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all uppercase tracking-wide"
                     >
