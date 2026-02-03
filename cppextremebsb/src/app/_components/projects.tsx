@@ -58,7 +58,7 @@ export default function Projects() {
                     transition={{ duration: 0.8, delay: 0.3 }}
                     className="text-white font-black uppercase tracking-tighter leading-none mb-4 drop-shadow-2xl"
                 >
-                    <span className="block text-3xl md:text-5xl lg:text-6xl mb-2 opacity-90">A Nova Ciência do</span>
+                    <span className="block text-3xl md:text-5xl lg:text-6xl mb-2 opacity-90">CLÍNICA DO</span>
                     <span className="block text-6xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400">
                         VA'A MODERNO
                     </span>
